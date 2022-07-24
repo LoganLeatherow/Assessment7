@@ -47,16 +47,26 @@ const extraLargeArray = getSizedArray(100000);
 
 // Try it with first function
 perf.start();                     // Starts timer
-doublerAppend(extraLargeArray);
+doublerAppend(tinyArray);
 let resultsAppend = perf.stop();  // Stops timer and save time results
 
 
 // Try it with second function
 perf.start();
-doublerInsert(extraLargeArray);
+doublerInsert(tinyArray);
 let resultsInsert = perf.stop();
 
 
 console.log('Results for the extraLargeArray');
 console.log("insert", resultsInsert.preciseWords);
 console.log("append", resultsAppend.preciseWords);
+
+
+
+// extraLargeArray insert 2.2480548 s append 7.5914 ms
+// largeArray insert 12.4772 ms append 779.4 us
+// mediumArray insert 271.6 us append 224.3 us
+// smallArray insert 130.8 us append 261.5 us
+// tinyArray insert 68.9 us append 162 us
+// Looking at the data from each function, a few things are noticeable. With fewer integers the insert function is more efficient. But as the array is scaled to larger numbers, the time gets exponentially larger. 
+// The append method is slower with fewer numbers but shows more scalability as the array grows. 
